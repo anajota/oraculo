@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oráculo do Amanhã</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="background-stars"></div>
+
+    <div class="container">
+
+        <div class="topo">
+
+            <span class="icone">🔮</span>
+
+            <h1>Oráculo do Amanhã</h1>
+
+            <p class="subtitulo">
+                Escolha uma área da sua vida e descubra o que o universo reserva para você.
+            </p>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="campo">
+
+                <label for="categoria">
+                    Escolha um caminho
+                </label>
+
+                <select name="categoria" required>
+
+                    <option value="">
+                        ✨ Selecione uma opção
+                    </option>
+
+                    <option value="amor">
+                        ❤️ Amoroso
+                    </option>
+
+                    <option value="profissional">
+                        💼 Profissional
+                    </option>
+
+                    <option value="pessoal">
+                        🌱 Pessoal
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button type="submit">
+                Revelar Futuro ✨
+            </button>
+
+        </form>
+
+        {% if mensagem %}
+
+            <div class="resultado">
+
+                <h2>Sua previsão</h2>
+
+                <p>
+                    {{ mensagem }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
